@@ -122,13 +122,22 @@ with right_col:
     if not filtered.empty:
         show_map = st.checkbox("Show Map", value=True)
         if show_map:
+            # Default center: US
+            if filtered.empty:
+                center_lat, center_lon = 39.8283, -98.5795  # Approx center of continental US
+                zoom_start = 4
+            else:
+                center_lat, center_lon = 39.8283, -98.5795
+                zoom_start = 4
+
             m = folium.Map(
-                location=[filtered['latitude'].mean(), filtered['longitude'].mean()],
-                zoom_start=13
+                location=[center_lat, center_lon],
+                zoom_start=zoom_start
             )
 
             marker_cluster = MarkerCluster().add_to(m)
 
+            # Add all filtered markers
             for _, row in filtered.iterrows():
                 folium.Marker(
                     [row['latitude'], row['longitude']],
