@@ -1,0 +1,27 @@
+name,address,phone,latitude,longitude,website,email
+Central City Free Clinic,100 Main St,555-1010,39.9612,-82.9988,https://centralclinic.example.com,info@centralclinic.example.com
+Metropolis Wellness Center,400 Daily Planet Blvd,555-4040,40.7128,-74.0059,https://metropoliswellness.example.com,contact@metropoliswellness.com
+Xavier Institute Clinic,700 Mutant Way,555-7070,40.7127,-74.0065,https://xavierclinic.example.com,info@xavierclinic.com
+Oscorp Free Clinic,1000 Oscorp St,555-0101,40.7130,-74.0063,https://oscorpclinic.example.com,contact@oscorp.com
+Spider-Man Community Clinic,111 Queens Blvd,555-1111,40.7282,-73.7949,https://spidermanclinic.example.com,info@spidermanclinic.com
+Stark Industries Wellness,444 Iron Ave,555-4444,34.0522,-118.2437,https://starkwellness.example.com,contact@starkwellness.com
+Safe Haven Clinic,222 Gotham Ave,555-1212,40.7131,-74.0060,https://safehaven.example.com,info@safehaven.com
+Avengers Medical Center,333 Shield Rd,555-1313,34.0523,-118.2438,https://avengersmedical.example.com,contact@avengersmedical.com
+Batcave Health Hub,444 Wayne Blvd,555-1414,40.7126,-74.0045,https://batcaveclinic.example.com,info@batcaveclinic.com
+Daily Planet Health Clinic,555 Metropolis St,555-1515,40.7129,-74.0058,https://dailyplanetclinic.example.com,contact@dailyplanetclinic.com
+Krypton Medical Center,101 Planet Blvd,555-1616,38.9072,-77.0369,https://kryptonclinic.example.com,info@kryptonclinic.com
+New Asgard Wellness Clinic,202 Rainbow Rd,555-1717,64.1265,-21.8174,https://newasgardclinic.example.com,contact@newasgardclinic.com
+Wakanda Community Clinic,303 Vibranium Way,555-1818,1.5197,32.0103,https://wakandaclinic.example.com,info@wakandaclinic.com
+Atlantis Healing Center,404 Ocean Blvd,555-1919,33.7683,-118.1956,https://atlantisclinic.example.com,contact@atlantisclinic.com
+Star Labs Health Clinic,505 Science Ave,555-2021,34.0521,-118.2436,https://starlabsclinic.example.com,info@starlabsclinic.com
+Justice League Medical Hub,606 Gotham Rd,555-2121,40.7133,-74.0064,https://justiceleagueclinic.example.com,contact@justiceleagueclinic.com
+Xavier West Wing Clinic,707 Mutant Blvd,555-2222,40.7135,-74.0062,https://xavierwestclinic.example.com,info@xavierwestclinic.com
+Daily Bugle Health,800 Newspaper St,555-2323,40.7125,-74.0055,https://dailybuglehealth.com,contact@dailybuglehealth.com
+Fortress of Solitude Clinic,900 Ice Rd,555-2424,78.2232,-72.1234,https://solitudeclinic.com,info@solitudeclinic.com
+Wayne Tower Wellness,1001 Gotham Heights,555-2525,40.7120,-74.0040,https://waynetowerwellness.com,contact@waynetower.com
+Pym Tech Medical Center,1102 Quantum Ave,555-2626,34.0520,-118.2440,https://pymclinic.com,info@pymclinic.com
+Shuri Healing Center,1203 Wakanda St,555-2727,1.5160,32.0120,https://shuriclinic.com,contact@shuriclinic.com
+Stark Expo Health Hub,1304 Iron Ave,555-2828,34.0524,-118.2439,https://starkexpohealth.com,info@starkexpo.com
+Wayne Manor Clinic,1405 Gotham Rd,555-2929,40.7127,-74.0050,https://waynemanorclinic.com,contact@waynemanor.com
+Gotham City Free Clinic,1506 Arkham St,555-3030,40.7132,-74.0061,https://gothamfreeclinic.com,info@gothamfreeclinic.com
+Metropolis Central Clinic,1607 Daily Planet Blvd,555-3131,40.7129,-74.0060,https://metropoliscentralclinic.com,contact@metropoliscentral.com
