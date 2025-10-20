@@ -119,36 +119,35 @@ with left_col:
         st.download_button("⬇️ Download Filtered Services as CSV", csv, "services.csv", "text/csv")
 
 with right_col:
-    if not filtered.empty:
-        show_map = st.checkbox("Show Map", value=True)
-        if show_map:
-            # Default center: US
-            if filtered.empty:
-                center_lat, center_lon = 39.8283, -98.5795  # Approx center of continental US
-                zoom_start = 4
-            else:
-                center_lat, center_lon = 39.8283, -98.5795
-                zoom_start = 4
+    show_map = st.checkbox("Show Map", value=True)
+    if show_map:
+        # If filtered results exist, zoom to their mean location; else default US center
+        if not filtered.empty:
+            center_lat = filtered['latitude'].mean()
+            center_lon = filtered['longitude'].mean()
+            zoom_start = 10  # Zoom closer for city-level view
+        else:
+            center_lat, center_lon = 39.8283, -98.5795  # Center of continental US
+            zoom_start = 4
 
-            m = folium.Map(
-                location=[center_lat, center_lon],
-                zoom_start=zoom_start
-            )
+        m = folium.Map(
+            location=[center_lat, center_lon],
+            zoom_start=zoom_start
+        )
 
-            marker_cluster = MarkerCluster().add_to(m)
+        marker_cluster = MarkerCluster().add_to(m)
 
-            # Add all filtered markers
-            for _, row in filtered.iterrows():
-                folium.Marker(
-                    [row['latitude'], row['longitude']],
-                    popup=(
-                        f"<b>{row['name']}</b><br>"
-                        f"{row['address']}<br>"
-                        f"{row['phone']}<br>"
-                        f"Website: <a href='{row['website']}' target='_blank'>{row['website']}</a><br>"
-                        f"Email: {row['email']}"
-                    ),
-                    icon=folium.Icon(color=category_colors[selected_category])
-                ).add_to(marker_cluster)
+        for _, row in filtered.iterrows():
+            folium.Marker(
+                [row['latitude'], row['longitude']],
+                popup=(
+                    f"<b>{row['name']}</b><br>"
+                    f"{row['address']}<br>"
+                    f"{row['phone']}<br>"
+                    f"Website: <a href='{row['website']}' target='_blank'>{row['website']}</a><br>"
+                    f"Email: {row['email']}"
+                ),
+                icon=folium.Icon(color=category_colors[selected_category])
+            ).add_to(marker_cluster)
 
-            st_folium(m, width=700, height=500)
+        st_folium(m, width=700, height=500)
