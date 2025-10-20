@@ -59,13 +59,21 @@ dataframes = {cat: pd.read_csv(file) for cat, file in category_files.items()}
 st.sidebar.header("Filter Services")
 category_options = list(category_files.keys())
 selected_category = st.sidebar.selectbox("Select a category", category_options)
-search_term = st.sidebar.text_input("Search by service name")
+data = dataframes[selected_category]
+
+# Autocomplete dropdown for service name
+all_service_names = data['name'].tolist()
+search_term = st.sidebar.selectbox(
+    "Search by service name",
+    options=[""] + all_service_names,
+    index=0
+)
+
 city_search = st.sidebar.text_input("Search by city/address (optional)")
 
 # -----------------------------
 # Filter Data
 # -----------------------------
-data = dataframes[selected_category]
 filtered = data.copy()
 if search_term:
     filtered = filtered[filtered['name'].str.contains(search_term, case=False)]
@@ -73,11 +81,10 @@ if city_search:
     filtered = filtered[filtered['address'].str.contains(city_search, case=False)]
 
 # -----------------------------
-# Category Emojis
+# Category Emojis & Colors
 # -----------------------------
 category_emojis = {"clinic": "🏥", "mental health": "🧠", "food aid": "🍎"}
 category_colors = {"clinic": "red", "mental health": "blue", "food aid": "green"}
-category_icons = {"clinic": "plus-sign", "mental health": "heart", "food aid": "cutlery"}
 
 # -----------------------------
 # Layout: Left = List, Right = Map
@@ -121,20 +128,23 @@ with left_col:
 with right_col:
     show_map = st.checkbox("Show Map", value=True)
     if show_map:
-        # If filtered results exist, zoom to their mean location; else default US center
-        if not filtered.empty:
+        # Smart zoom: default US, zoom to filtered results if available
+        # Determine if any filter/search is applied
+        filters_applied = bool(search_term.strip()) or bool(city_search.strip())
+
+        if filters_applied and not filtered.empty:
+            # Zoom to filtered results
             center_lat = filtered['latitude'].mean()
             center_lon = filtered['longitude'].mean()
-            zoom_start = 10  # Zoom closer for city-level view
+            zoom_start = 10
         else:
-            center_lat, center_lon = 39.8283, -98.5795  # Center of continental US
+            # Default: US center
+            center_lat, center_lon = 39.8283, -98.5795
             zoom_start = 4
 
-        m = folium.Map(
-            location=[center_lat, center_lon],
-            zoom_start=zoom_start
-        )
+        m = folium.Map(location=[center_lat, center_lon], zoom_start=zoom_start)
 
+        m = folium.Map(location=[center_lat, center_lon], zoom_start=zoom_start)
         marker_cluster = MarkerCluster().add_to(m)
 
         for _, row in filtered.iterrows():
@@ -151,3 +161,4 @@ with right_col:
             ).add_to(marker_cluster)
 
         st_folium(m, width=700, height=500)
+
